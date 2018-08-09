@@ -1,0 +1,74 @@
+{
+  "remote": {
+    "url": "<YOUR REMOTE URL HERE>",
+    "headers": {
+      "x-api-key": "<YOUR API KEY HERE>",
+      "AuthToken": "<YOUR AUTHTOKEN HERE>"
+    }
+  },
+  "env": "staging",
+  "domains": [
+    {
+      "title": "Staging",
+      "url": "staging.mydomain.com",
+      "environment_keys": ["staging", "development"],
+      "fastly_service_id": "<FASTLY SERVICE ID HERE>"
+    },
+    {
+      "title": "Beta",
+      "url": "beta.mydomain.com",
+      "environment_keys": ["production"],
+      "fastly_service_id": "<FASTLY SERVICE ID HERE>"
+    },
+    {
+      "title": "Live",
+      "url": "www.mydomain.com",
+      "environment_keys": ["production"],
+      "fastly_service_id": "<FASTLY SERVICE ID HERE>"
+    }
+  ],
+  "environments": {
+    "development": {
+      "node_env": "development",
+      "git": {
+        "default_branch": "develop"
+      },
+      "aws": {
+        "bucket": "www.mydomain.com",
+        "prefix": "development"
+      }
+    },
+    "staging": {
+      "node_env": "staging",
+      "git": {
+        "default_branch": "develop"
+      },
+      "aws": {
+        "bucket": "www.mydomain.com",
+        "prefix": "staging"
+      }
+    },
+    "production": {
+      "node_env": "production",
+      "git": {
+        "default_branch": "master",
+        "required_branch": "master"
+      },
+      "aws": {
+        "bucket": "www.mydomain.com",
+        "prefix": "production"
+      }
+    }
+  },
+  "aws": {
+    "options": {
+      "accessKeyId": "<ACCESS KEY HERE>",
+      "secretAccessKey": "<YOUR SECRET ACCESS KEY HERE>"
+    }
+  },
+  "fastly": {
+    "url": "api.fastly.com",
+    "version_header_name": "Prepend Version Path",
+    "api_key": "<YOUR API KEY HERE>"
+  }
+}

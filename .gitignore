@@ -1,0 +1,8 @@
+# OS Files
+.DS_Store
+
+# Deploy bak
+.deployconfig.json
+
+# Dependency directories
+node_modules/
