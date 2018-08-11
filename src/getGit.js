@@ -23,7 +23,7 @@ module.exports = (config, opts) => {
         return inquirer.prompt({
           type: 'confirm',
           name: 'override',
-          message: `Environment '${environment.node_env}' requires branch '${required_branch}'. ` +
+          message: `Environment '${environment.key}' requires branch '${required_branch}'. ` +
             `Override with '${branch}'?`
         }).then(resp => resp.override ? resolve(branch) : reject('Exit on Git Branch'));
       }

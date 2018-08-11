@@ -29,7 +29,11 @@
   ],
   "environments": {
     "development": {
-      "node_env": "development",
+      "cmd_postfix": "-- --mode development",
+      "args": {
+        "NODE_ENV": "development",
+        "VUE_APP_ENV": "development"
+      },
       "git": {
         "default_branch": "develop"
       },
@@ -39,7 +43,11 @@
       }
     },
     "staging": {
-      "node_env": "staging",
+      "cmd_postfix": "-- --mode staging",
+      "args": {
+        "NODE_ENV": "production",
+        "VUE_APP_ENV": "staging"
+      },
       "git": {
         "default_branch": "develop"
       },
@@ -49,7 +57,11 @@
       }
     },
     "production": {
-      "node_env": "production",
+      "cmd_postfix": "-- --mode production",
+      "args": {
+        "NODE_ENV": "production",
+        "VUE_APP_ENV": "production"
+      },
       "git": {
         "default_branch": "master",
         "required_branch": "master"

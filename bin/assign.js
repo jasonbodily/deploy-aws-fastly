@@ -36,7 +36,7 @@ let log = require('../src/logging'),
     .then(opts => {
       // log.object({
       //   domain: ' '+opts.domain.url,
-      //   environment: opts.environment.node_env,
+      //   environment: opts.environment.key,
       //   branch: ' '+opts.git_branch
       // }, 83);
       log.success(timer.stop());

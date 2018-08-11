@@ -14,7 +14,14 @@ module.exports = (config, opts) => {
 	return execute('npm install')
 
 		// Run Compile Task, return dist file
-		.then(() => execute(`NODE_ENV=${opts.environment.node_env} npm run build`))
+		.then(() => {
+      let env = opts.environment,
+          env_args = env.args || {},
+          env_args_str = Object.keys(env_args).reduce((str, key) => {
+            return str += `${key}='${env_args[key]}' `;
+          }, '');
+      return execute(`${env_args_str} npm run build ${env.cmd_postfix || ''}`);
+    })
 
 		// Get Version
 		.then(() => {

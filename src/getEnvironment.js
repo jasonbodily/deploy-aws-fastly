@@ -10,10 +10,15 @@ module.exports = (config, opts) => {
     throw 'No environments found for provided domain';
   }
 
+  // Set keys on config
+  for (let key in config.environments) {
+    config.environments[key].key = key;
+  }
+
 	let environments = opts.domain.environment_keys
       .map(key => config.environments[key])
       .filter(e => e),
-		environment = environments.find(e => e.node_env === opts.env) || (environments.length === 1 && environments[0]);
+		environment = environments.find(e => e.key === opts.env) || (environments.length === 1 && environments[0]);
 
 	timer.start();
 	log.header('Resolving Environment');
@@ -25,13 +30,13 @@ module.exports = (config, opts) => {
 		name: 'environment',
 		message: 'Select an environment:',
 		choices: environments.map(env => ({
-			name: env.node_env,
+			name: env.key,
 			value: env
 		}))
 	})
 	.then(res => {
 		opts.environment = res.environment || environment;
-		log.run(opts.environment.node_env, 'Compile Environment is ');
+		log.run(opts.environment.key, 'Compile Environment is ');
 		log.finish('Finished', timer.stop());
 	})
 	.then(() => opts)
