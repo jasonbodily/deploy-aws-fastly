@@ -15,7 +15,7 @@ function fillPre(str, len) {
 module.exports = (config, opts) => {
 
   let domains = config.domains,
-      domain = domains[opts.domain];
+      domain = domains.find(d => d.title.toLowerCase() === opts.domain);
 
   timer.start();
   log.header('Resolving Domain');
