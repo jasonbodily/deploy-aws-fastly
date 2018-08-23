@@ -1,6 +1,6 @@
 {
   "name": "deploy-aws-fastly",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deploy for Amazon S3, Fastly configuration",
   "main": "bin/deploy.js",
   "scripts": {
