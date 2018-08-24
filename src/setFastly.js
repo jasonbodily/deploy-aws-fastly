@@ -12,7 +12,7 @@ module.exports = (config, opts) => {
 	let fastly = config.fastly,
 		url = `https://${fastly.url}`,
 		headers = {
-			'Fastly-Key': fastly.api_key,
+			'Fastly-Key': fastly.api_key || process.env.FASTLY_API_KEY,
 			'Content-Type': 'application/json'
 		};
 
