@@ -11,7 +11,10 @@ module.exports = (config, opts) => {
 	log.header('Creating Distribution');
 
 	// Resolve Repository
-	return execute('npm install')
+  let skip_install = /^\s*(true|1)\s*$/i.test(opts.skipNpmInstall)
+      install = skip_install ? Promise.resolve() : execute('npm install')
+
+	return install
 
 		// Run Compile Task, return dist file
 		.then(() => {

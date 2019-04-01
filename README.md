@@ -23,6 +23,11 @@ Once your keys are in place, you may run `amazon-fastly-deploy` and `amazon-fast
  6. **Uploads the build to S3**. Distributions are labelled with the date they were uploaded. Distributions contain environment specific environment configurations and are therefore kept in s3 according to environment.
  7. **Points the domain to the build** and purges the cache to allow browsers to immediately receive the latest updates. This is currently a varnish configuration on Fastly. *NOTE: Until this step, deploy's may be safely exited. Exiting during this step could result in complications with Fastly.*
 
+#### deploy options
+**--skip-npm-install** (default false) assumes npm dependencies are already present when creating dist
+**--require-branch** (default false) ignores requirement for specific git branch on deploy
+**--require-clean** (default false) ignores requirement for git branch to be clean on deploy
+
 ### npm run assign
 
 ```npm run assign``` points a selected domain to an already-existing build. It is most often used 1) to assign a tested build to production, or 2) to rollback to a previous build in the event of emergency. In order, the assign command does the following:

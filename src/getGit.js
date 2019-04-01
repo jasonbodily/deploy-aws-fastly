@@ -12,6 +12,14 @@ module.exports = (config, opts) => {
   let { environment } = opts,
       { required_branch, require_clean } = environment.git;
 
+  if ('require-clean' in opts) {
+    require_clean = /^\s*(true|1)\s*$/i.test(opts['require-clean'])
+  }
+
+  if ('require-branch' in opts) {
+    required_branch = /^\s*(true|1)\s*$/i.test(opts['require-branch'])
+  }
+
   timer.start();
   log.header('Resolving Git Branch');
   return new Promise((resolve, reject) => {
