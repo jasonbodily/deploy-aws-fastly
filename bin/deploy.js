@@ -49,6 +49,7 @@ let log = require('../src/logging'),
     }, err => {
       log.error(err);
       log.failed(timer.stop());
-      // process.exitCode = 1;
-    });
+      process.exit(1);
+    })
+    
 
