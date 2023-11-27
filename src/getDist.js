@@ -41,6 +41,11 @@ module.exports = (config, opts) => {
 		return new Promise((resolve, reject) => {
 			cp.exec(cmd, opts || { cwd: config._app_root_path }, (err, stdout, stderr) => {
 				spinner.stop(true);
+
+				if (err) {
+					log.error(stdout);
+				}
+
 				return err ? reject(stderr) : resolve();
 		  });
 		});
